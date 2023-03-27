@@ -7,7 +7,7 @@
 :root {
   /* sizes */
   --default-width: 1024px;
-  --default-gap: 30px;
+  --default-gap: 16px;
 
   /* color */
   --header-color: #f46523;
@@ -220,7 +220,6 @@ body {
 main {
   width: min(var(--default-width), 100%);
   min-height: 200px;
-  background-color: #ccc;
 }
 
 /* footer */
