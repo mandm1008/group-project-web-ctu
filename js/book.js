@@ -1,4 +1,4 @@
-const book = {
+const bookHandler = {
   data: [
     {
       id: 1,
@@ -82,6 +82,10 @@ const book = {
     },
   ],
 
+  find(id) {
+    return this.data.find((value) => value.id === id)
+  },
+
   price(money = 0) {
     let str = money.toString()
     let result = ''
@@ -100,7 +104,7 @@ const book = {
         <h4>${bookData.name}</h4>
         <span class="book__price-sale">${this.price(bookData.sale)}</span>
         <span class="book__price">${this.price(bookData.price)}</span>
-        <button class="book__add-cart">
+        <button class="book__add-cart" onClick="cartHandler.addItem(${bookData.id})">
           <i class="fa-solid fa-bag-shopping"></i>
           Thêm vào giỏ
         </button>
@@ -163,7 +167,7 @@ const book = {
     if (element) {
       element.innerHTML = this.render(type, options)
     } else {
-      console.error("Element no found!")
+      console.error("Element not found!")
     }
   }
 }

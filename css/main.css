@@ -121,8 +121,52 @@ body {
   cursor: pointer;
 }
 
-.header__cart span {
+.header__cart>span {
   margin: 0 8px;
+}
+
+#cart-wrapper {
+  --margin-item: 12px;
+  cursor: default;
+}
+
+#cart-wrapper:has(> .header__cart-item) {
+  margin: calc(0px - var(--margin-item)) 0;
+}
+
+.header__cart-item {
+  display: flex;
+  padding: var(--margin-item) 0;
+}
+
+.header__cart-item~.header__cart-item {
+  border-top: 1px solid #eee;
+}
+
+.header__cart-item img {
+  height: 30px;
+  object-fit: contain;
+}
+
+.header__cart-item .header__cart-content {
+  flex: 1;
+  margin: 0 8px;
+}
+
+.header__cart-item .header__cart-content p {
+  margin-top: 2px;
+  text-align: left;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.header__cart-item>span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  margin: 0 8px;
+  cursor: pointer;
 }
 
 .tippy {
@@ -131,7 +175,7 @@ body {
   top: calc(100% + 4px);
   right: -1px;
   width: max-content;
-  padding: 8px 4px;
+  padding: 16px 12px;
   background-color: #fff;
   color: #000;
   box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3),

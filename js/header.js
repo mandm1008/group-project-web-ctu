@@ -1,38 +1,95 @@
 "use strict";
 
 const headerHandler = {
-  searchInputElement: document.querySelector(".header__search-box input"),
-  searchIconElement: document.querySelector(".header__search-icon"),
-  cartElement: document.querySelector(".header__cart"),
+  search: {
+    inputElement: document.querySelector(".header__search-box input"),
+    iconElement: document.querySelector(".header__search-icon"),
 
-  search() {
-    if (this.searchInputElement.value) location.assign(`${location.origin}/search?q=${encodeURIComponent(this.searchInputElement.value)}`)
+    search() {
+      if (this.inputElement.value) location.assign(`${location.origin}/search?q=${encodeURIComponent(this.inputElement.value)}`)
+    },
+
+    init() {
+      this.inputElement.addEventListener("keyup", (e) => {
+        if (e.keyCode === 13) {
+          this.search()
+        }
+      })
+
+      this.iconElement.addEventListener("click", () => this.search())
+    }
   },
-  init() {
-    this.searchInputElement.addEventListener("keyup", (e) => {
-      if (e.keyCode === 13) {
-        this.search()
+
+  cart: {
+    cartElement: document.querySelector(".header__cart"),
+    wrapperElement: document.querySelector("#cart-wrapper"),
+
+    html(itemData) {
+      return `
+        <div class="header__cart-item">
+          <img src="${itemData.image}" alt="${itemData.name}" />
+          <div class="header__cart-content">
+            <h4>${itemData.name}</h4>
+
+            <p>SL: ${itemData.quantity}</p>
+          </div>
+          <span onClick="cartHandler.removeItem(${itemData.id}); headerHandler.cart.render()">
+            <i class="fa-solid fa-xmark"></i>
+          </span>
+        </div>
+      `
+    },
+
+    render() {
+      let data = cartHandler.getCart()
+
+      if (data.length === 0) {
+        this.wrapperElement.innerHTML = "Không có sản phẩm nào trong giỏ"
+        return
       }
-    })
 
-    this.searchIconElement.addEventListener("click", () => this.search())
+      data = data.map((value) => ({
+        ...value,
+        ...bookHandler.find(value.id)
+      }))
 
-    this.cartElement.addEventListener("click", (e) => {
-      e.stopPropagation()
-      if (!this.cartElement.classList.contains("visible-tippy")) {
-        this.cartElement.classList.add("visible-tippy")
+      this.wrapperElement.innerHTML = data.map((item) => this.html(item)).join("")
+    },
 
-        const setEvents = (function () {
+    renderQuantity() {
+      const spanElement = this.cartElement.querySelector("span")
+      spanElement.innerText = `${cartHandler.getCart().length} SẢN PHẨM`
+    },
+
+    init() {
+      this.cartElement.addEventListener("click", (e) => {
+        e.stopPropagation()
+        if (!this.cartElement.classList.contains("visible-tippy")) {
+          this.render()
+          this.cartElement.classList.add("visible-tippy")
+
+          const setEvents = (function () {
+            this.cartElement.classList.remove("visible-tippy")
+
+            window.removeEventListener("click", setEvents)
+          }).bind(this)
+
+          window.addEventListener("click", setEvents)
+        } else {
           this.cartElement.classList.remove("visible-tippy")
+        }
+      })
 
-          window.removeEventListener("click", setEvents)
-        }).bind(this)
+      this.wrapperElement.addEventListener("click", (e) => e.stopPropagation())
 
-        window.addEventListener("click", setEvents)
-      } else {
-        this.cartElement.classList.remove("visible-tippy")
-      }
-    })
+      window.addEventListener("change-cart", this.renderQuantity.bind(this))
+      this.renderQuantity()
+    }
+  },
+
+  init() {
+    this.search.init()
+    this.cart.init()
   }
 }
 

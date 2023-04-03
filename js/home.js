@@ -68,7 +68,7 @@ const homeHandler = {
             this.chooseItems[i].classList.remove("active")
         }
       });
-      book.append("#choose-books", this.chooseItems[type].getAttribute("data-type"), { length: 4 })
+      bookHandler.append("#choose-books", this.chooseItems[type].getAttribute("data-type"), { length: 4 })
     },
 
     init() {
@@ -89,6 +89,6 @@ const homeHandler = {
 
 homeHandler.init()
 
-book.append("#best-sale", "sale", { length: 1 })
-book.append('#sale-books', 'new', { length: 8 })
-book.append('#new-books', 'new', { length: 4 })
+bookHandler.append("#best-sale", "sale", { length: 1 })
+bookHandler.append('#sale-books', 'new', { length: 8 })
+bookHandler.append('#new-books', 'new', { length: 4 })
