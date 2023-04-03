@@ -1,86 +1,5 @@
 const bookHandler = {
-  data: [
-    {
-      id: 1,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
-      price: 210000,
-      sale: 178500,
-      time: 1679895338692,
-      image: "https://newshop.vn/public/uploads/products/51024/sach-bao-ve-tre-truoc-chan-thuong-tam-ly_L.jpg",
-    },
-    {
-      id: 2,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
-      price: 210000,
-      sale: 178500,
-      time: 1679895338692,
-      image: "https://newshop.vn/public/uploads/products/51024/sach-bao-ve-tre-truoc-chan-thuong-tam-ly_L.jpg",
-    },
-    {
-      id: 3,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
-      price: 210000,
-      sale: 178500,
-      time: 1679895338692,
-      image: "https://newshop.vn/public/uploads/products/51024/sach-bao-ve-tre-truoc-chan-thuong-tam-ly_L.jpg",
-    },
-    {
-      id: 4,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
-      price: 210000,
-      sale: 178500,
-      time: 1679895338692,
-      image: "https://newshop.vn/public/uploads/products/51024/sach-bao-ve-tre-truoc-chan-thuong-tam-ly_L.jpg",
-    },
-    {
-      id: 5,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
-      price: 210000,
-      sale: 178500,
-      time: 1679895338692,
-      image: "https://newshop.vn/public/uploads/products/51024/sach-bao-ve-tre-truoc-chan-thuong-tam-ly_L.jpg",
-    },
-    {
-      id: 6,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
-      price: 210000,
-      sale: 178500,
-      time: 1679895338692,
-      image: "https://newshop.vn/public/uploads/products/51024/sach-bao-ve-tre-truoc-chan-thuong-tam-ly_L.jpg",
-    },
-    {
-      id: 7,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
-      price: 210000,
-      sale: 178500,
-      time: 1679895338692,
-      image: "https://newshop.vn/public/uploads/products/51024/sach-bao-ve-tre-truoc-chan-thuong-tam-ly_L.jpg",
-    },
-    {
-      id: 8,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
-      price: 210000,
-      sale: 178500,
-      time: 1679895338692,
-      image: "https://newshop.vn/public/uploads/products/51024/sach-bao-ve-tre-truoc-chan-thuong-tam-ly_L.jpg",
-    },
-    {
-      id: 9,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
-      price: 210000,
-      sale: 178500,
-      time: 1679895338692,
-      image: "https://newshop.vn/public/uploads/products/51024/sach-bao-ve-tre-truoc-chan-thuong-tam-ly_L.jpg",
-    },
-    {
-      id: 10,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
-      price: 210000,
-      sale: 178500,
-      time: 1679895338692,
-      image: "https://newshop.vn/public/uploads/products/51024/sach-bao-ve-tre-truoc-chan-thuong-tam-ly_L.jpg",
-    },
-  ],
+  data: [],
 
   find(id) {
     return this.data.find((value) => value.id === id)
@@ -169,5 +88,22 @@ const bookHandler = {
     } else {
       console.error("Element not found!")
     }
+  },
+
+  appendFirst(...rest) {
+    const handler = (() => {
+      this.append(...rest)
+
+      window.removeEventListener("finish-load-books", handler)
+    }).bind(this)
+
+    window.addEventListener("finish-load-books", handler)
   }
 }
+
+fetch("./js/books.json")
+  .then((value) => value.json())
+  .then((value) => {
+    bookHandler.data = value
+    window.dispatchEvent(new Event("finish-load-books"))
+  })
