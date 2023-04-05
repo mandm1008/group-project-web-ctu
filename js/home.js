@@ -1,4 +1,11 @@
+/**
+ * File xử lý các phần trong trang chủ
+ * YÊU CẦU: Đặt dưới file book.js
+ */
 const homeHandler = {
+  /**
+   * Phần xử lý chuyển banner
+   */
   slider: {
     slideItems: document.querySelectorAll(".slide .slide__item"),
     prevBtn: document.querySelector(".slide .slide__left"),
@@ -51,11 +58,14 @@ const homeHandler = {
     }
   },
 
+  /**
+   * Phần xử lý lựu chọn bán chạy và nổi bật
+   */
   chooseBooks: {
     type: undefined,
     chooseItems: document.querySelectorAll(".content__choose .content__choose-item"),
 
-    setType(type) {
+    setType(type, isFirst) {
       if (this.type === type) return
 
       this.type = type
@@ -68,7 +78,7 @@ const homeHandler = {
             this.chooseItems[i].classList.remove("active")
         }
       });
-      bookHandler.appendFirst("#choose-books", this.chooseItems[type].getAttribute("data-type"), { length: 4 })
+      bookHandler[isFirst ? "appendFirst" : "append"]("#choose-books", this.chooseItems[type].getAttribute("data-type"), { length: 4 })
     },
 
     init() {
@@ -77,7 +87,7 @@ const homeHandler = {
           homeHandler.chooseBooks.setType(i)
         })
       })
-      this.setType(0)
+      this.setType(0, true)
     }
   },
 

@@ -1,6 +1,10 @@
-"use strict";
-
+/**
+ * Phần xử lý cho đầu trang và chân trang
+ */
 const headerHandler = {
+  /**
+   * Xử lý khung tìm kiếm
+   */
   search: {
     inputElement: document.querySelector(".header__search-box input"),
     iconElement: document.querySelector(".header__search-icon"),
@@ -20,6 +24,9 @@ const headerHandler = {
     }
   },
 
+  /**
+   * Xủ lý tạo html cho giỏ hàng tại đầu trang
+   */
   cart: {
     cartElement: document.querySelector(".header__cart"),
     wrapperElement: document.querySelector("#cart-wrapper"),

@@ -1,6 +1,13 @@
+/**
+ * Phần xử lý cho book:
+ * Từ nạp data đến tạo html cho book
+ * YÊU CẦU: Có link file book.css trên head trang
+ */
 const bookHandler = {
+  // Mảng dữ liệu sách được nạp từ file books.json -> Phần nạp ở cuối file
   data: [],
 
+  // Trả về dữ liệu sách dự trên "id": bookHandler.find(<id sách>)
   find(id) {
     return this.data.find((value) => value.id === id)
   },
@@ -80,6 +87,11 @@ const bookHandler = {
     }
   },
 
+  /**
+   * Sử dụng khi muốn tạo html sau khi load trang. Đối số:
+   * 1. Chuỗi selector css của phần tử
+   * 2, 3. như 1, 2 của render phía trên
+   */
   append(queryString, type, options) {
     const element = document.querySelector(queryString)
 
@@ -90,6 +102,9 @@ const bookHandler = {
     }
   },
 
+  /**
+   * Sử dụng khi muốn tạo html ngay lần load trang đầu
+   */
   appendFirst(...rest) {
     const handler = (() => {
       this.append(...rest)
@@ -101,6 +116,9 @@ const bookHandler = {
   }
 }
 
+/**
+ * Nạp dữ liệu từ file books.json
+ */
 fetch("./js/books.json")
   .then((value) => value.json())
   .then((value) => {

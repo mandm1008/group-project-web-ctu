@@ -1,3 +1,6 @@
+/**
+ * Phần xử lý cho giỏ hàng
+ */
 const cartHandler = {
   key: 'cart-items',
 
@@ -17,6 +20,9 @@ const cartHandler = {
   },
 
   // item: { id, quantity }
+  /**
+   * Thêm 1 sản phẩm vào giỏ
+   */
   addItem(id) {
     const oldData = this.getCart()
     const index = oldData.findIndex((item) => item.id === id)
@@ -33,6 +39,9 @@ const cartHandler = {
     this.setCart(oldData)
   },
 
+  /**
+   * Xoá 1 sp ra khỏi giỏ
+   */
   removeItem(id) {
     const oldData = this.getCart()
     const index = oldData.findIndex((item) => item.id === id)
@@ -46,6 +55,9 @@ const cartHandler = {
     }
   },
 
+  /**
+   * Chỉnh lại số lượng của 1 sản phẩm trong giỏ
+   */
   setQuantity(id, number) {
     const oldData = this.getCart()
     const index = oldData.findIndex((item) => item.id === id)
