@@ -57,6 +57,7 @@ body {
 }
 
 .header__top span {
+  position: relative;
   padding: 8px 0;
   text-transform: uppercase;
   vertical-align: middle;
@@ -65,6 +66,42 @@ body {
 
 .header__top span~span {
   margin-left: 12px;
+}
+
+.header__top .header__top-user {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 20px;
+  width: max-content;
+  padding: 8px 0;
+  list-style: none;
+  background-color: #fff;
+  text-transform: none;
+  color: #000;
+  box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.2),
+    -2px 2px 1px 0 rgba(0, 0, 0, 0.2);
+  font-size: 1.4rem;
+  text-align: left;
+  z-index: 9;
+}
+
+.header__top .header__user:hover .header__top-user {
+  display: block;
+}
+
+.header__top .header__top-user li {
+  padding: 0 12px;
+}
+
+.header__top .header__top-user li~li {
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid #ccc;
+}
+
+.header__top .header__top-user li:hover {
+  text-decoration: underline;
 }
 
 .header__top span i {

@@ -89,12 +89,60 @@ const headerHandler = {
 
       this.wrapperElement.addEventListener("click", (e) => e.stopPropagation())
 
-      window.addEventListener("change-cart", this.renderQuantity.bind(this))
+      window.addEventListener(cartHandler.changeEvent, this.renderQuantity.bind(this))
+      window.addEventListener(userHandler.changeUser, this.renderQuantity.bind(this))
       this.renderQuantity()
     }
   },
 
+  user: {
+    headerTopElement: document.querySelector(".header__top"),
+
+    html(user) {
+      if (user === null) {
+        return `
+          <span>
+            <a href="/login"><i class="fa-solid fa-lock"></i>Đăng nhập</a>
+          </span>
+          <span>
+            <a href="/signup"><i class="fa-solid fa-right-to-bracket"></i>Đăng ký</a>
+          </span>
+          <span>
+            <a href="/payments"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
+          </span>
+        `
+      } else {
+        return `
+          <span class="header__user">
+            <i class="fa-solid fa-lock"></i>${user.name}
+
+            <ul class="header__top-user">
+              <li><a href="/cart"><i class="fa-solid fa-bag-shopping"></i>Giỏ hàng</a></li>
+              <li onclick="userHandler.logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i>Đăng xuất</li>
+            </ul>
+          </span>
+          <span>
+            <a href="/payments"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
+          </span>
+        `
+      }
+    },
+
+    render() {
+      const user = userHandler.getCrrUser()
+
+      this.headerTopElement.innerHTML = this.html(user)
+    },
+
+    init() {
+      this.render()
+
+      window.addEventListener(userHandler.changeUser, this.render.bind(this))
+    }
+  },
+
   init() {
+    this.user.init()
     this.search.init()
     this.cart.init()
   }

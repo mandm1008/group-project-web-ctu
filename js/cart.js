@@ -1,21 +1,33 @@
 /**
  * Phần xử lý cho giỏ hàng
+ * 
+ * typeof cartItem {
+ *  id: string,
+ *  quantity: number
+ * }
  */
 const cartHandler = {
   key: 'cart-items',
+  changeEvent: "change-cart",
 
   setCart(dataItems) {
-    localStorage.setItem(this.key, JSON.stringify(dataItems))
-    window.dispatchEvent(new Event("change-cart"))
+    const user = userHandler.getCrrUser()
+
+    if (user === null) {
+      return false
+    }
+
+    userHandler.setCart(user.id, dataItems)
+    window.dispatchEvent(new Event(this.changeEvent))
   },
 
   getCart() {
-    const data = localStorage.getItem(this.key)
+    const user = userHandler.getCrrUser()
 
-    if (data === null) {
-      return []
+    if (user !== null) {
+      return user.cart || []
     } else {
-      return JSON.parse(data)
+      return []
     }
   },
 
