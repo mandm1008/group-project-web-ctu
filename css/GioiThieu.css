@@ -1,0 +1,23 @@
+.GioiThieu{
+    border: 1px solid orange;
+    border-radius: 5px;
+    padding: 5px;
+}
+h1{
+    text-align: center;
+    color: orange;
+    font-size: 30px;
+}
+p{
+    font-size: 20px;
+}
+table{
+    font-size: 20px;
+}
+th{
+    border: 1px solid silver;
+    padding: 0px 5px;
+}
+p{
+    margin: 10px;
+}

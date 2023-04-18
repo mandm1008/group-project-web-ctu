@@ -65,7 +65,7 @@ const homeHandler = {
     type: undefined,
     chooseItems: document.querySelectorAll(".content__choose .content__choose-item"),
 
-    setType(type, isFirst) {
+    setType(type) {
       if (this.type === type) return
 
       this.type = type
@@ -78,7 +78,7 @@ const homeHandler = {
             this.chooseItems[i].classList.remove("active")
         }
       });
-      bookHandler[isFirst ? "appendFirst" : "append"]("#choose-books", this.chooseItems[type].getAttribute("data-type"), { length: 4 })
+      bookHandler.append("#choose-books", this.chooseItems[type].getAttribute("data-type"), { length: 4 })
     },
 
     init() {
@@ -87,7 +87,7 @@ const homeHandler = {
           homeHandler.chooseBooks.setType(i)
         })
       })
-      this.setType(0, true)
+      this.setType(0)
     }
   },
 
@@ -99,6 +99,6 @@ const homeHandler = {
 
 homeHandler.init()
 
-bookHandler.appendFirst("#best-sale", "sale", { length: 1 })
-bookHandler.appendFirst('#sale-books', 'new', { length: 8 })
-bookHandler.appendFirst('#new-books', 'new', { length: 4 })
+bookHandler.append("#best-sale", "sale", { length: 1 })
+bookHandler.append('#sale-books', 'new', { length: 8 })
+bookHandler.append('#new-books', 'new', { length: 4 })

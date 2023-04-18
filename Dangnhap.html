@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./lib/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/Dangnhap.css">
+    <title>Đăng nhập</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__top-ctn">
+            <div class="header__top">
+                <span>
+                    <a href="./Dangnhap.html"><i class="fa-solid fa-lock"></i>Đăng nhập</a>
+                </span>
+                <span>
+                    <a href="./Dangky.html"><i class="fa-solid fa-right-to-bracket"></i>Đăng ký</a>
+                </span>
+                <span>
+                    <a href="#"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
+                </span>
+            </div>
+        </div>
+
+        <div class="header__banner-ctn">
+            <div class="header__banner">
+                <div class="header__logo">
+                    <a href="./index.html">EBookStore</a>
+                </div>
+
+                <div class="header__func">
+                    <div class="header__func-item"><i class="fa-solid fa-cube"></i>GIAO HÀNG FREE</div>
+                    <div class="header__func-item"><i class="fa-solid fa-right-left"></i>ĐỔI TRẢ 50%</div>
+                    <div class="header__func-item"><i class="fa-solid fa-life-ring"></i>HỖ TRỢ 24/7</div>
+                </div>
+
+                <div class="header__cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>0 SẢN PHẨM</span>
+                    <i class="fa-solid fa-caret-down"></i>
+
+                    <div class="tippy header__cart-tippy">
+                        <div id="cart-wrapper">Không có sản phẩm nào trong giỏ</div>
+
+                        <p class="header__cart-view"><a href="./GioHang.html">Xem giỏ hàng</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="header__navbar-ctn">
+            <div class="header__navbar">
+                <div class="header__navbar-list">
+                    <div class="header__navbar-item"><a href="./index.html">TRANG CHỦ</a></div>
+                    <div class="header__navbar-item"><a href="./GioiThieu.html">GIỚI THIỆU</a></div>
+                    <div class="header__navbar-item"><a href="./SanPham.html">SẢN PHẨM</a></div>
+                    <div class="header__navbar-item"><a href="#">TIN TỨC</a></div>
+                    <div class="header__navbar-item"><a href="./LienHe.html">LIÊN HỆ</a></div>
+                </div>
+
+                <div class="header__search-box">
+                    <input type="text" placeholder="Tìm kiếm">
+                    <span class="header__search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Đăng nhập</h1>
+        <fieldset>
+            <form name="dangnhap" action="/dangnhap.php" method="post" enctype="application/x-www-form-urlencoded"
+                onsubmit="return formvalidate()">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="tentk"> <b>Tên tài khoản </b> </label>
+                        </td>
+                        <td>
+                            <input type="text" name="tentk" id="tentk"
+                                placeholder="Vui lòng nhập tên tài khoản của bạn." size="40">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="matkhau"> <b> Mật khẩu </b> </label>
+                        </td>
+                        <td>
+                            <input type="password" name="password" id="password"
+                                placeholder="Vui lòng nhập mật khẩu của bạn." size="40">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="checkbox" name="remember"> Ghi nhớ cho lần đăng nhập sau
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Bạn quên <a target="_self" href="Dangnhap.html">mật khẩu?</a></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit" value="login">Đăng nhập</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Hoặc, đăng nhập bằng</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><br /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a id="facebook" href="https://www.facebook.com/"><i class="fa-brands fa-facebook">
+                                    Facebook</i></a>
+                            <a id="twitter" href="https://twitter.com/"><i class="fa-brands fa-twitter"> Twitter</i></a>
+                            <a id="gmail" href="https://www.gmail.com/"><i class="fa-brands fa-google"> Gmail</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><br /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p>Bạn chưa có tài khoản? <a target="_self" href="Dangky.html">Đăng ký</a> tại đây. </p>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </fieldset>
+
+    </main>
+
+    <footer class="footer-ctn">
+        <div class="footer">
+            <div class="footer__content">
+                <h4>Thông tin</h4>
+                <ul>
+                    <li><a href="./index.html">Trang chủ</a></li>
+                    <li><a href="./GioiThieu.html">Giới thiệu</a></li>
+                    <li><a href="./SanPham.html">Sản phẩm</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="./LienHe.html">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer__content">
+                <h4>Chính sách</h4>
+                <ul>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Chính sách vận chuyển</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Điều khoản dịch vụ</a></li>
+                    <li><a href="#">Quy định sử dụng</a></li>
+                </ul>
+            </div>
+            <div class="footer__content">
+                <h4>Hỗ trợ</h4>
+                <ul>
+                    <li><a href="./TimKiem.html">Tìm kiếm</a></li>
+                    <li><a href="#">Hướng dẫn</a></li>
+                    <li><a href="./Dangnhap.html">Đăng nhập</a></li>
+                    <li><a href="./Dangky.html">Đăng ký</a></li>
+                    <li><a href="./GioHang.html">Giỏ hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer__contact">
+                <h4>Liên hệ</h4>
+                <ul>
+                    <li><i class="fa-solid fa-house"></i>Khu II, Đường 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</li>
+                    <li><i class="fa-solid fa-envelope"></i>contact@ebookstore.com</li>
+                    <li><i class="fa-solid fa-phone"></i>(+84) 99999 9999</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer__pay">
+            <i class="fa-brands fa-cc-paypal"></i>
+            <i class="fa-brands fa-cc-mastercard"></i>
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-brands fa-cc-discover"></i>
+        </div>
+    </footer>
+
+    <script src="./js/user.js"></script>
+    <script src="./js/cart.js"></script>
+    <script src="./js/book.js"></script>
+    <script src="./js/header.js"></script>
+    <script src="./js/Dangnhap.js"></script>
+</body>
+
+</html>

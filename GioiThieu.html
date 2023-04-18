@@ -2,14 +2,17 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/book.css">
   <link rel="stylesheet" href="./css/home.css">
-  <title>Trang chủ</title>
+  <link rel="stylesheet" href="./css/GioiThieu.css">
+  <title>Giới Thiệu</title>
+
 </head>
 
 <body>
@@ -80,13 +83,13 @@
         <div class="slide__left">
           <i class="fa-solid fa-chevron-left"></i>
         </div>
-        <div class="slide__item">
+        <div class="slide__item" style="transform: translateX(-100%);">
           <img src="./images/banner_1.jpg" alt="Banner Sách">
         </div>
-        <div class="slide__item">
+        <div class="slide__item" style="transform: translateX(-100%);">
           <img src="./images/banner_2.jpg" alt="Banner Sách">
         </div>
-        <div class="slide__item">
+        <div class="slide__item" style="transform: translateX(-100%);">
           <img src="./images/banner_3.jpg" alt="Banner Sách">
         </div>
         <div class="slide__right">
@@ -104,10 +107,23 @@
         <div class="content__bar-item">
           <h3 class="content__h3-link">
             ĐANG GIẢM GIÁ
-            <a href=".#"><i class="fa-solid fa-arrow-right"></i></a>
+            <a
+              href="https://mandm1008.github.io/group-project-web-ctu/?utm_source=zalo&amp;utm_medium=zalo&amp;utm_campaign=zalo#"><i
+                class="fa-solid fa-arrow-right"></i></a>
           </h3>
 
-          <div id="best-sale"></div>
+          <div id="best-sale">
+            <div class="book">
+              <img src="./images/books/no-game-no-life.png" alt="No Game No Life">
+              <h4>No Game No Life</h4>
+              <span class="book__price-sale">99.000đ</span>
+              <span class="book__price">150.000đ</span>
+              <button class="book__add-cart" onclick="cartHandler.addItem(2)">
+                <i class="fa-solid fa-bag-shopping"></i>
+                Thêm vào giỏ
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="content__bar-item">
@@ -151,7 +167,7 @@
 
           <div class="content__feedback">
             <div class="content__feedback-value">
-              Thật tuyệt khi mua hàng tại EBookStore,<br />
+              Thật tuyệt khi mua hàng tại EBookStore,<br>
               tôi cảm thấy mình được phục vụ vô cùng chu đáo và tận tình.
               Chắc chắn tôi sẽ quay lại tiếp tục ủng hộ EBookStore nhiều lần nữa.
             </div>
@@ -166,42 +182,92 @@
           <h3 class="content__h3-link">MẠNG XÃ HỘI</h3>
 
           <div class="content__facebook">
-            <span><a href=".https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a></span>
-            <span><a href=".https://twitter.com/"><i class="fa-brands fa-twitter"></i></a></span>
-            <span><a href=".https://www.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a></span>
+            <span><a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a></span>
+            <span><a href="https://twitter.com/"><i class="fa-brands fa-twitter"></i></a></span>
+            <span><a href="https://www.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a></span>
           </div>
         </div>
       </div>
 
-      <div class="content__main-bar">
-        <div class="content__bar-item">
-          <h3 class="content__h3-link">
-            SẢN PHẨM MỚI
-            <a href=".#"><i class="fa-solid fa-arrow-right"></i></a>
-          </h3>
+      <article class="GioiThieu">
+        <h1>GIỚI THIỆU</h1>
+        <p>Trang web này được tạo ra bởi <a href="">Nhóm Những Người Yêu Sách</a> với mục đích giới thiệu những loại
+          sách mới, sách hay đã qua chọn lựa với nhiều chủ đề, hổ trợ mọi người trong việc sưu tầm và sử dụng các đầu
+          sách dễ hơn. Bên cạnh đó Nhóm Những Người Yêu Sách còn muốn đem đến cho những người yêu sách những thông tin
+          về tác giả và tác phẩm và những cảm nhận của nhóm về các đầu sách.</p>
+        <h1>THỰC HIỆN MỤC TIÊU</h1>
+        <p>Với mong muốn đem đến những đầu sách nhanh nhất cho mọi người Nhóm Những Người Yêu Sách đã liên kết với nhiều
+          cửa hàng sách báo trên khắp cả nước với vai trò là khác hàng thân thiết. Thông qua việc là một khách hàng lớn
+          Nhóm Những Người Yêu Sách có thể đặt trước và tận dụng tốt các chương trình ưu đãi mà mình có nhầm đem đên
+          những điều tốt nhất cho mọi người.</p>
+        <p>Một số nhà sách lớn đã liên kết:
+          <select name="cuaHangLienKet" id="">
+            <optgroup label="Miền Nam">
+              <option value="">Phương Nam</option>
+              <option value="">Cá Chép</option>
+              <option value="">ARTBOOK</option>
+              <option value="">Kim Đồng</option>
+            </optgroup>
+            <optgroup label="Miền Trung">
+              <option value="">Hồng Đức</option>
+              <option value="">Phát Đạt</option>
+              <option value="">Hàng Thuyên</option>
+              <option value="">Fahasa</option>
+            </optgroup>
+            <optgroup label="Miền Bắc">
+              <option value="">Tiến Thọ</option>
+              <option value="">Nhã Nam</option>
+              <option value="">Tràng An</option>
+              <option value="">Tân Việt</option>
+            </optgroup>
+          </select>
+        </p>
+        <h1>KHÓ KHĂN BAN ĐẦU</h1>
+        <p>Khi mới thành lập nhóm gặp không ít khó khăn khi không thể tìm ra một đối tác để liên kết. Không dừng lại
+          nhóm còn gặp khó khăn khi không có đủ kinh phí để tạo ra kho sách riêng nên ở giai đoạn đầu đều chủ yếu đem
+          sách đến tay mọi người thông qua hình thức mua đi bán như bên thứ ba. Nhưng rồi mọi chuyện củng thay đổi khi
+          nhóm nhận được sự ủng hộ kinh thông qua quyên góp. Sau hai lần kêu gọi quyên góp nhóm đã đủ sức để xây dựng
+          cho mình một kho sách đồ sộ với hơn 500 đầu sách và có hơn 100 đầu sách mới cập nhật lên kê hàng tháng.</p>
+        <h2><a href="">Bạn có thể đóng góp tại đây</a></h2>
+        <h1>MỤC TIÊU HIỆN TẠI VÀ TƯƠNG LAI</h1>
+        <p>Ở hiện tại Nhóm Những Người Yêu Sách đã thỏa mãng với những gì mình có khi có thể đem những đầu sách mới đến
+          tay mọi người. Nhưng không vì thế nhóm sẽ không tiếp tục phát triển trong tương lai. Mục tiêu hiện tại của
+          nhóm là mở phạm vi ra nhiều tỉnh thành hơn để giảm chi phí vận chuyển cho mọi người khi chỉ mới có một vài kho
+          lưu sách ở miền nam. Xa hơn nữa là có thể mở rộng ra bên ngoài nước nhầm mang đến những đầu sách được viết
+          bằng nhiều ngôn ngữ để đảm bảo được sự độc đáo trong cách hành văn mà những bản dịch không thể đem đến được.
+          Tình yêu sách là không giới hạng về không gian.</p>
+        <table>
+          <tr>
+            <th>Miền Nam</th>
+            <th>Miền Trung</th>
+            <th>MIền Bắc</th>
+          </tr>
+          <tr>
+            <th>Cần Thơ: <a href="">2 chi nhánh</a></th>
+            <th>Khánh Hòa: <a href="">3 chi nhánh</a></th>
+            <th>Hà Nội: <a href="">4 chi nhánh</a></th>
+          </tr>
+          <tr>
+            <th>Hồ Chí Minh: <a href="">5 chi nhánh</a></th>
+            <th>Đà Nẵng: <a href="">1 chi nhánh</a></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th>Bà Rịa-Vũng Tàu: <a href="">3 chi nhánh</a></th>
+            <th>Hếu: <a href="">2 chi nhánh</a></th>
+            <th></th>
+          </tr>
+          <tr>
+            <th></th>
+            <th>Nghệ An: <a href="">2 chi nhánh</a></th>
+            <th></th>
+          </tr>
+        </table>
+        <h1>LỜI CẢM ƠN</h1>
+        <p>Cảm ơn mọi người vì đã theo dõi và ủng hộ Nhóm Những Người Yêu Sách trong suốt quá trình phát triển đến lúc
+          đạt được những thành công bước đầu như ngày hôm nay. Xin chân thành cảm ơn một lần nữa</p>
+      </article>
 
-          <div class="book__wrapper" id="new-books"></div>
-        </div>
-
-        <div class="content__bar-item">
-          <h3 class="content__h3-link">
-            SẢN PHẨM GIẢM GIÁ
-            <a href=".#"><i class="fa-solid fa-arrow-right"></i></a>
-          </h3>
-
-          <div class="book__wrapper" id="sale-books"></div>
-        </div>
-
-        <div class="content__bar-item">
-          <h3 class="content__h3-link content__choose">
-            <span class="content__choose-item" data-name="selling">BÁN CHẠY</span>
-            <span class="content__choose-item" data-name="outstanding">NỔI BẬT</span>
-          </h3>
-
-          <div class="book__wrapper" id="choose-books"></div>
-        </div>
-      </div>
-    </div>
   </main>
 
   <footer class="footer-ctn">
@@ -254,12 +320,14 @@
     </div>
   </footer>
 
+
   <script src="./js/user.js"></script>
   <script src="./js/cart.js"></script>
   <script src="./js/book.js"></script>
-
   <script src="./js/header.js"></script>
-  <script src="./js/home.js"></script>
+  <script>
+    bookHandler.append("#best-sale", "sale", { length: 1 })
+  </script>
 </body>
 
 </html>

@@ -40,7 +40,7 @@ const headerHandler = {
 
             <p>SL: ${itemData.quantity}</p>
           </div>
-          <span onClick="cartHandler.removeItem(${itemData.id}); headerHandler.cart.render()">
+          <span onclick="cartHandler.removeItem(${itemData.id}); headerHandler.cart.render()">
             <i class="fa-solid fa-xmark"></i>
           </span>
         </div>
@@ -48,7 +48,13 @@ const headerHandler = {
     },
 
     render() {
+      const user = userHandler.getCrrUser()
       let data = cartHandler.getCart()
+
+      if (user === null) {
+        this.wrapperElement.parentElement.innerHTML = 'Vui lòng <a href="./DangNhap.html" style="text-decoration: underline; color: blue;">đăng nhập</a>'
+        return
+      }
 
       if (data.length === 0) {
         this.wrapperElement.innerHTML = "Không có sản phẩm nào trong giỏ"
@@ -102,13 +108,13 @@ const headerHandler = {
       if (user === null) {
         return `
           <span>
-            <a href="/login"><i class="fa-solid fa-lock"></i>Đăng nhập</a>
+            <a href="./DangNhap.html"><i class="fa-solid fa-lock"></i>Đăng nhập</a>
           </span>
           <span>
-            <a href="/signup"><i class="fa-solid fa-right-to-bracket"></i>Đăng ký</a>
+            <a href="./DangKy.html"><i class="fa-solid fa-right-to-bracket"></i>Đăng ký</a>
           </span>
           <span>
-            <a href="/payments"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
+            <a href="#"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
           </span>
         `
       } else {
@@ -117,12 +123,12 @@ const headerHandler = {
             <i class="fa-solid fa-lock"></i>${user.name}
 
             <ul class="header__top-user">
-              <li><a href="/cart"><i class="fa-solid fa-bag-shopping"></i>Giỏ hàng</a></li>
+              <li><a href="./GioHang.html"><i class="fa-solid fa-bag-shopping"></i>Giỏ hàng</a></li>
               <li onclick="userHandler.logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i>Đăng xuất</li>
             </ul>
           </span>
           <span>
-            <a href="/payments"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
+            <a href="#"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
           </span>
         `
       }
