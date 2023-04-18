@@ -326,7 +326,9 @@
   <script src="./js/book.js"></script>
   <script src="./js/header.js"></script>
   <script>
-    bookHandler.append("#best-sale", "sale", { length: 1 })
+    window.addEventListener("DOMContentLoaded", () => {
+      bookHandler.append("#best-sale", "sale", { length: 1 })
+    })
   </script>
 </body>
 
