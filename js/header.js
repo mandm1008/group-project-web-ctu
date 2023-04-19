@@ -6,21 +6,21 @@ const headerHandler = {
    * Xử lý khung tìm kiếm
    */
   search: {
-    inputElement: document.querySelector(".header__search-box input"),
-    iconElement: document.querySelector(".header__search-icon"),
+    inputElement: () => document.querySelector(".header__search-box input"),
+    iconElement: () => document.querySelector(".header__search-icon"),
 
     search() {
-      if (this.inputElement.value) location.assign(`${location.origin}/search?q=${encodeURIComponent(this.inputElement.value)}`)
+      if (this.inputElement().value) location.assign(`${location.origin}/TimKiem.html?q=${encodeURIComponent(this.inputElement().value)}`)
     },
 
     init() {
-      this.inputElement.addEventListener("keyup", (e) => {
+      this.inputElement().addEventListener("keyup", (e) => {
         if (e.keyCode === 13) {
           this.search()
         }
       })
 
-      this.iconElement.addEventListener("click", () => this.search())
+      this.iconElement().addEventListener("click", () => this.search())
     }
   },
 
@@ -28,8 +28,8 @@ const headerHandler = {
    * Xủ lý tạo html cho giỏ hàng tại đầu trang
    */
   cart: {
-    cartElement: document.querySelector(".header__cart"),
-    wrapperElement: document.querySelector("#cart-wrapper"),
+    cartElement: () => document.querySelector(".header__cart"),
+    wrapperElement: () => document.querySelector("#cart-wrapper"),
 
     html(itemData) {
       return `
@@ -52,12 +52,12 @@ const headerHandler = {
       let data = cartHandler.getCart()
 
       if (user === null) {
-        this.wrapperElement.parentElement.innerHTML = 'Vui lòng <a href="./DangNhap.html" style="text-decoration: underline; color: blue;">đăng nhập</a>'
+        this.wrapperElement().innerHTML = 'Vui lòng <a href="./DangNhap.html" style="text-decoration: underline; color: blue;">đăng nhập</a>'
         return
       }
 
       if (data.length === 0) {
-        this.wrapperElement.innerHTML = "Không có sản phẩm nào trong giỏ"
+        this.wrapperElement().innerHTML = "Không có sản phẩm nào trong giỏ"
         return
       }
 
@@ -66,34 +66,34 @@ const headerHandler = {
         ...bookHandler.find(value.id)
       }))
 
-      this.wrapperElement.innerHTML = data.map((item) => this.html(item)).join("")
+      this.wrapperElement().innerHTML = data.map((item) => this.html(item)).join("")
     },
 
     renderQuantity() {
-      const spanElement = this.cartElement.querySelector("span")
+      const spanElement = this.cartElement().querySelector("span")
       spanElement.innerText = `${cartHandler.getCart().length} SẢN PHẨM`
     },
 
     init() {
-      this.cartElement.addEventListener("click", (e) => {
+      this.cartElement().addEventListener("click", (e) => {
         e.stopPropagation()
-        if (!this.cartElement.classList.contains("visible-tippy")) {
+        if (!this.cartElement().classList.contains("visible-tippy")) {
           this.render()
-          this.cartElement.classList.add("visible-tippy")
+          this.cartElement().classList.add("visible-tippy")
 
           const setEvents = (function () {
-            this.cartElement.classList.remove("visible-tippy")
+            this.cartElement().classList.remove("visible-tippy")
 
             window.removeEventListener("click", setEvents)
           }).bind(this)
 
           window.addEventListener("click", setEvents)
         } else {
-          this.cartElement.classList.remove("visible-tippy")
+          this.cartElement().classList.remove("visible-tippy")
         }
       })
 
-      this.wrapperElement.addEventListener("click", (e) => e.stopPropagation())
+      this.wrapperElement().addEventListener("click", (e) => e.stopPropagation())
 
       window.addEventListener(cartHandler.changeEvent, this.renderQuantity.bind(this))
       window.addEventListener(userHandler.changeUser, this.renderQuantity.bind(this))
@@ -102,7 +102,7 @@ const headerHandler = {
   },
 
   user: {
-    headerTopElement: document.querySelector(".header__top"),
+    headerTopElement: () => document.querySelector(".header__top"),
 
     html(user) {
       if (user === null) {
@@ -137,7 +137,7 @@ const headerHandler = {
     render() {
       const user = userHandler.getCrrUser()
 
-      this.headerTopElement.innerHTML = this.html(user)
+      this.headerTopElement().innerHTML = this.html(user)
     },
 
     init() {

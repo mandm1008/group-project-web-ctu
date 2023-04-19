@@ -63,8 +63,8 @@ const userHandler = {
     return null
   },
 
-  register(name, email, password) {
-    if (this.addUser({ name, email, password })) {
+  register(name, email, password, realName, phone, birthDay, locate) {
+    if (this.addUser({ name, email, password, realName, phone, birthDay, locate })) {
       return true
     } else {
       console.error("Email đã đăng ký!!!");
@@ -74,7 +74,8 @@ const userHandler = {
 
   login(email, password) {
     const list = this.getListUsers()
-    const userLogin = list.find((value) => value.email === email)
+    const userLogin = list.find((value) => value.email === email) ||
+      list.find((value) => value.name === email)
 
     if (userLogin) {
       if (userLogin.password === password) {

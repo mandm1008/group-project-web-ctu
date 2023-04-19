@@ -14,6 +14,7 @@ const cartHandler = {
     const user = userHandler.getCrrUser()
 
     if (user === null) {
+      window.location.href = "./DangNhap.html"
       return false
     }
 

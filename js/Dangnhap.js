@@ -23,5 +23,8 @@ function formvalidate() {
         frm.password.focus();
         return false;
     }
-    return true;
+
+    userHandler.login(frm.tentk.value, frm.password.value)
+    window.location.href = "./index.html"
+    return false
 }

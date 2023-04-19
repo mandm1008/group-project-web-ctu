@@ -156,6 +156,7 @@ body {
   border: 1px solid var(--header-text-color);
   border-radius: 2px;
   cursor: pointer;
+  user-select: none;
 }
 
 .header__cart>span {

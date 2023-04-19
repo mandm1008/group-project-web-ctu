@@ -84,5 +84,15 @@ function formvalidate() {
         return false;
     }
 
-    return true
+    userHandler.register(
+        frm.tentk.value,
+        frm.email.value,
+        frm.password.value,
+        frm.hoten.value,
+        frm.sdt.value,
+        frm.Ngsinh,
+        frm.dchi.value
+    )
+    window.location.href = "./DangNhap.html"
+    return false
 }

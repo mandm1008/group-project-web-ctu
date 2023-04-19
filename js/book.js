@@ -2124,7 +2124,7 @@ const bookHandler = {
     },
     {
       id: 10,
-      name: "Bảo vệ trẻ trước chấn thương tâm lý",
+      name: "Overlord",
       price: 210000,
       sale: 178500,
       time: 1679895338692,
@@ -2752,8 +2752,10 @@ const bookHandler = {
         <img src="${bookData.image}"
           alt="${bookData.name}">
         <h4>${bookData.name}</h4>
-        <span class="book__price-sale">${this.price(bookData.sale)}</span>
-        <span class="book__price">${this.price(bookData.price)}</span>
+        <p>
+          <span class="book__price-sale">${this.price(bookData.sale)}</span>
+          <span class="book__price">${this.price(bookData.price)}</span>
+        </p>
         <button class="book__add-cart" onClick="cartHandler.addItem(${bookData.id})">
           <i class="fa-solid fa-bag-shopping"></i>
           Thêm vào giỏ
@@ -2798,17 +2800,36 @@ const bookHandler = {
     ** type: new, sale
     ** options: { q?: string, length?: number }
   */
+  removeAccents(str) {
+    return str.normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+  },
+
   render(type = undefined, { q, length } = { length: this.data.length }) {
+    let list
+
     switch (type) {
       case "new":
-        return this.getListNew(length).reduce((prev, curr) => prev + '\n' + this.html(curr), '')
+        list = this.getListNew(length)
+        break
 
       case "sale":
-        return this.getListSale(length).reduce((prev, curr) => prev + '\n' + this.html(curr), '')
+        list = this.getListSale(length)
+        break
 
       default:
-        return Array.from(this.data).slice(0, length).reduce((prev, curr) => prev + '\n' + this.html(curr), '')
+        list = Array.from(this.data).slice(0, length)
+        break
     }
+
+    if (typeof q !== "undefined") {
+      list = list.filter((value) =>
+        this.removeAccents(value.name.toLocaleLowerCase())
+          .includes(this.removeAccents(q.toLocaleLowerCase())))
+    }
+
+    return list.reduce((prev, curr) => prev + '\n' + this.html(curr), '')
   },
 
   /**
