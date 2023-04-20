@@ -2806,7 +2806,7 @@ const bookHandler = {
       .replace(/đ/g, 'd').replace(/Đ/g, 'D');
   },
 
-  render(type = undefined, { q, length } = { length: this.data.length }) {
+  render(type = undefined, { q, length } = { length: this.data.length }, customHtml) {
     let list
 
     switch (type) {
@@ -2831,6 +2831,10 @@ const bookHandler = {
 
     if (list.length <= 0) {
       return `<p id="no-book">Không có sản phẩm nào!</p>`
+    }
+
+    if (typeof customHtml !== "undefined") {
+      return list.reduce((prev, curr) => prev + '\n' + customHtml(curr), '')
     }
 
     return list.reduce((prev, curr) => prev + '\n' + this.html(curr), '')

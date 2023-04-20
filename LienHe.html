@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./lib/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/book.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" type="text/css" href="./css/lienhe.css">
+    <title>Liên Hệ</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__top-ctn">
+            <div class="header__top">
+                <span>
+                    <a href="/login"><i class="fa-solid fa-lock"></i>Đăng nhập</a>
+                </span>
+                <span>
+                    <a href="/signup"><i class="fa-solid fa-right-to-bracket"></i>Đăng ký</a>
+                </span>
+                <span>
+                    <a href="/payments"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
+                </span>
+            </div>
+        </div>
+        <div class="header__banner-ctn">
+            <div class="header__banner">
+                <div class="header__logo">
+                    <a href="/">EBookStore</a>
+                </div>
+                <div class="header__func">
+                    <div class="header__func-item"><i class="fa-solid fa-cube"></i>GIAO HÀNG FREE</div>
+                    <div class="header__func-item"><i class="fa-solid fa-right-left"></i>ĐỔI TRẢ 50%</div>
+                    <div class="header__func-item"><i class="fa-solid fa-life-ring"></i>HỖ TRỢ 24/7</div>
+                </div>
+                <div class="header__cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>0 SẢN PHẨM</span>
+                    <i class="fa-solid fa-caret-down"></i>
+                    <div class="tippy header__cart-tippy">
+                        <div id="cart-wrapper">Không có sản phẩm nào trong giỏ</div>
+                        <p class="header__cart-view"><a href="/cart">Xem giỏ hàng</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="header__navbar-ctn">
+            <div class="header__navbar">
+                <div class="header__navbar-list">
+                    <div class="header__navbar-item"><a href="/">TRANG CHỦ</a></div>
+                    <div class="header__navbar-item"><a href="/about">GIỚI THIỆU</a></div>
+                    <div class="header__navbar-item"><a href="/books">SẢN PHẨM</a></div>
+                    <div class="header__navbar-item"><a href="/news">TIN TỨC</a></div>
+                    <div class="header__navbar-item"><a href="./lien_he.html">LIÊN HỆ</a></div>
+                </div>
+                <div class="header__search-box">
+                    <input type="text" placeholder="Tìm kiếm">
+                    <span class="header__search-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="main-content">
+            <div class="map">
+                <a target="_self" href="https://goo.gl/maps/KfTN9WvUTfQZ4YDQ8"><img src="./images/map.png"
+                        width="450px" /></a>
+            </div>
+            <div class="form">
+                <form name="myform" onsubmit="return validateForm()" method="post" action="#">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="text" value="" name="name" placeholder="Họ Tên Của Bạn" required
+                                    class="input" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="email" value="" name="email" placeholder="Email Của Bạn" required
+                                    class="input" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea cols="70" rows="10" name="content" placeholder="Nội Dung"
+                                    class="input"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="submit" value="Gửi Liên Hệ" class="submit" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <h1>Đăng Ký Nhận Tin Qua Email </h1>
+        <p>Hãy đăng ký ngay hôm nay để nhận được những tin tức cập nhật mới nhất về sản phẩm và các chương trình giảm
+            giá,khuyến mãi của chúng tôi.</p>
+
+        <div class="register">
+            <input type="email" placeholder="Nhập Email Của Bạn" id="email" required>
+            <button type="button" onclick="checkEmail()"><img src="./images/paperplane.png"></button>
+        </div>
+        <div class="line"><img src="./images/line.png"></div>
+
+        <div class="font-size">
+            <div>
+                <img src="./images/1.png">
+            </div>
+            <div>
+                <img src="./images/2.png">
+            </div>
+            <div>
+                <img src="./images/4.png">
+            </div>
+            <div>
+                <img src="./images/3.png">
+            </div>
+        </div>
+    </main>
+    <footer class="footer-ctn">
+        <div class="footer">
+            <div class="footer__content">
+                <h4>Thông tin</h4>
+                <ul>
+                    <li><a href="/">Trang chủ</a></li>
+                    <li><a href="/about">Giới thiệu</a></li>
+                    <li><a href="/books">Sản phẩm</a></li>
+                    <li><a href="/news">Tin tức</a></li>
+                    <li><a href="./lienhe.html">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer__content">
+                <h4>Chính sách</h4>
+                <ul>
+                    <li><a href="/pocily">Chính sách bảo mật</a></li>
+                    <li><a href="/ship">Chính sách vận chuyển</a></li>
+                    <li><a href="/change">Chính sách đổi trả</a></li>
+                    <li><a href="/service">Điều khoản dịch vụ</a></li>
+                    <li><a href="/uses">Quy định sử dụng</a></li>
+                </ul>
+            </div>
+            <div class="footer__content">
+                <h4>Hỗ trợ</h4>
+                <ul>
+                    <li><a href="/search">Tìm kiếm</a></li>
+                    <li><a href="/support">Hướng dẫn</a></li>
+                    <li><a href="/login">Đăng nhập</a></li>
+                    <li><a href="/signup">Đăng ký</a></li>
+                    <li><a href="/cart">Giỏ hàng</a></li>
+                </ul>
+            </div>
+            <div class="footer__contact">
+                <h4>Liên hệ</h4>
+                <ul>
+                    <li><i class="fa-solid fa-house"></i>Khu II, Đường 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</li>
+                    <li><i class="fa-solid fa-envelope"></i><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                            data-cfemail="e0838f8e94818394a085828f8f8b93948f9285ce838f8d">[email&#160;protected]</a>
+                    </li>
+                    <li><i class="fa-solid fa-phone"></i>(+84) 99999 9999</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__pay">
+            <i class="fa-brands fa-cc-paypal"></i>
+            <i class="fa-brands fa-cc-mastercard"></i>
+            <i class="fa-brands fa-cc-visa"></i>
+            <i class="fa-brands fa-cc-discover"></i>
+        </div>
+    </footer>
+
+    <script src="./js/LienHe.js"></script>
+</body>
+
+</html>
