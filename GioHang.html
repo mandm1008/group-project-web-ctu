@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="./lib/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/book.css">
-  <link rel="stylesheet" href="./css/TimKiem.css">
-  <title>Tìm kiếm</title>
+  <link rel="stylesheet" href="./css/home.css">
+  <link rel="stylesheet" href="./css/GioHang.css">
+  <title>Giỏ hàng</title>
 </head>
 
 <body>
@@ -75,7 +76,30 @@
   </header>
 
   <main>
-    <div class="book__wrapper" id="search-book"></div>
+    <h1>Giỏ hàng</h1>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Mã SP</th>
+          <th>Tên sản phẩm</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Thành tiền</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody id="content"></tbody>
+
+      <tr>
+        <td class="total" colspan="6">
+          Tổng:
+          <span id="total"></span>
+          <button>Thanh Toán</button>
+        </td>
+      </tr>
+    </table>
   </main>
 
   <footer class="footer-ctn">
@@ -132,7 +156,7 @@
   <script src="./js/cart.js?v=2"></script>
   <script src="./js/book.js?v=2"></script>
   <script src="./js/header.js?v=2"></script>
-  <script src="./js/TimKiem.js?v=2"></script>
+  <script src="./js/GioHang.js?v=2"></script>
 </body>
 
 </html>

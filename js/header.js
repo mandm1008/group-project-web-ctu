@@ -10,7 +10,7 @@ const headerHandler = {
     iconElement: () => document.querySelector(".header__search-icon"),
 
     search() {
-      if (this.inputElement().value) location.assign(`${location.origin}/TimKiem.html?q=${encodeURIComponent(this.inputElement().value)}`)
+      if (this.inputElement().value) window.location.href = `./TimKiem.html?q=${encodeURIComponent(this.inputElement().value)}`
     },
 
     init() {

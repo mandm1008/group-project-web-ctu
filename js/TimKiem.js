@@ -11,7 +11,7 @@ const searchHandler = {
   init() {
     const q = this.getQuery().q
 
-    headerHandler.search.inputElement.value = q
+    headerHandler.search.inputElement().value = q
     bookHandler.append("#search-book", undefined, { q: this.getQuery().q })
   }
 }

@@ -75,7 +75,7 @@ const cartHandler = {
     const oldData = this.getCart()
     const index = oldData.findIndex((item) => item.id === id)
 
-    oldData[index].quantity += number
+    oldData[index].quantity = number
     if (oldData[index].quantity < 1) {
       oldData[index].quantity = 1
     }

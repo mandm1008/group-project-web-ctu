@@ -2829,6 +2829,10 @@ const bookHandler = {
           .includes(this.removeAccents(q.toLocaleLowerCase())))
     }
 
+    if (list.length <= 0) {
+      return `<p id="no-book">Không có sản phẩm nào!</p>`
+    }
+
     return list.reduce((prev, curr) => prev + '\n' + this.html(curr), '')
   },
 
