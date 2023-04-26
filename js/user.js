@@ -26,7 +26,7 @@ const userHandler = {
     const curr = this.getCrrUser()
 
     localStorage.setItem(this.listUser, JSON.stringify(list))
-    localStorage.setItem(this.currUser, JSON.stringify(list.find(user => user.id === curr.id)))
+    if (curr !== null) localStorage.setItem(this.currUser, JSON.stringify(list.find(user => user.id === curr.id)))
   },
 
   getNextID() {
