@@ -1,0 +1,24 @@
+.main {
+  margin: 20px 0;
+  text-align: left;
+}
+
+.main h1 {
+  text-align: center;
+  color: red;
+  padding: 12px 0;
+}
+
+.main h2 {
+  padding-top: 12px;
+}
+
+.main h2+p {
+  margin-top: 20px;
+}
+
+.main p {
+  margin-left: 12px;
+  margin-top: 8px;
+  font-size: 1.6rem;
+}

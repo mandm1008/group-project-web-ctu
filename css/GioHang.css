@@ -42,6 +42,10 @@ h1 {
   font-size: 1.6rem;
 }
 
+.cart-table tbody tr td button a:visited {
+  color: #0000ee;
+}
+
 .cart-table th,
 .cart-table td {
   padding: 8px;

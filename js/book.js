@@ -2731,7 +2731,7 @@ const bookHandler = {
     }
   ],
 
-  // Trả về dữ liệu sách dự trên "id": bookHandler.find(<id sách>)
+  // Trả về dữ liệu sách dựa trên "id": bookHandler.find(<id sách>)
   find(id) {
     return this.data.find((value) => value.id === id)
   },
@@ -2806,7 +2806,7 @@ const bookHandler = {
       .replace(/đ/g, 'd').replace(/Đ/g, 'D');
   },
 
-  render(type = undefined, { q, length } = { length: this.data.length }, customHtml) {
+  render(type = undefined, { q, length } = { length: this.data.length }, customHtml = this.html.bind(this)) {
     let list
 
     switch (type) {
@@ -2833,11 +2833,7 @@ const bookHandler = {
       return `<p id="no-book">Không có sản phẩm nào!</p>`
     }
 
-    if (typeof customHtml !== "undefined") {
-      return list.reduce((prev, curr) => prev + '\n' + customHtml(curr), '')
-    }
-
-    return list.reduce((prev, curr) => prev + '\n' + this.html(curr), '')
+    return list.reduce((prev, curr) => prev + '\n' + customHtml(curr), '')
   },
 
   /**

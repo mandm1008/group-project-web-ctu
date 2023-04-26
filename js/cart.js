@@ -32,6 +32,10 @@ const cartHandler = {
     }
   },
 
+  clearCart() {
+    this.setCart([])
+  },
+
   // item: { id, quantity }
   /**
    * Thêm 1 sản phẩm vào giỏ

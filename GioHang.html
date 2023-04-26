@@ -25,7 +25,7 @@
           <a href="./DangKy.html"><i class="fa-solid fa-right-to-bracket"></i>Đăng ký</a>
         </span>
         <span>
-          <a href="#"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
+          <a href="./GioHang.html"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
         </span>
       </div>
     </div>
@@ -97,9 +97,24 @@
         <td class="total" colspan="6">
           Tổng:
           <span id="total"></span>
-          <button>Thanh Toán</button>
+          <button onclick="buyAll()">Thanh Toán</button>
         </td>
       </tr>
+    </table>
+
+
+    <h1>Đã mua</h1>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Mã SP</th>
+          <th>Tên sản phẩm</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody id="content-books"></tbody>
     </table>
   </main>
 

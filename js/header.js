@@ -9,6 +9,15 @@ const headerHandler = {
     inputElement: () => document.querySelector(".header__search-box input"),
     iconElement: () => document.querySelector(".header__search-icon"),
 
+    getQuery() {
+      return location.search.substring(1).split("&")
+        .map(item => ({
+          [decodeURIComponent(item.substring(0, item.indexOf("=")))]:
+            decodeURIComponent(item.substring(item.indexOf("=") + 1))
+        }))
+        .reduce((prev, curr) => ({ ...prev, ...curr }), {})
+    },
+
     search() {
       if (this.inputElement().value) window.location.href = `./TimKiem.html?q=${encodeURIComponent(this.inputElement().value)}`
     },
@@ -114,7 +123,7 @@ const headerHandler = {
             <a href="./DangKy.html"><i class="fa-solid fa-right-to-bracket"></i>Đăng ký</a>
           </span>
           <span>
-            <a href="#"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
+            <a href="./GioHang.html"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
           </span>
         `
       } else {
@@ -128,7 +137,7 @@ const headerHandler = {
             </ul>
           </span>
           <span>
-            <a href="#"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
+            <a href="./GioHang.html"><i class="fa-solid fa-square-check"></i>Thanh toán</a>
           </span>
         `
       }

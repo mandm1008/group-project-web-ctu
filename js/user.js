@@ -23,7 +23,10 @@ const userHandler = {
   },
 
   setListUser(list) {
+    const curr = this.getCrrUser()
+
     localStorage.setItem(this.listUser, JSON.stringify(list))
+    localStorage.setItem(this.currUser, JSON.stringify(list.find(user => user.id === curr.id)))
   },
 
   getNextID() {
@@ -105,5 +108,29 @@ const userHandler = {
     this.setListUser(list)
 
     localStorage.setItem(this.currUser, JSON.stringify(list[index]))
+  },
+
+  hasBook(id) {
+    const user = this.getCrrUser()
+
+    return user.books && user.books.findIndex((bookId) => bookId === id) !== -1
+  },
+
+  buyBooks(ids) {
+    const list = this.getListUsers()
+    const curr = this.getCrrUser()
+    const index = list.findIndex(user => user.id === curr.id)
+
+    if (list[index].books) {
+      list[index].books = [...new Set([...list[index].books, ...ids])]
+    } else {
+      list[index].books = [...new Set(ids)]
+    }
+
+    this.setListUser(list)
+  },
+
+  getBooks() {
+    return this.getCrrUser().books || []
   }
 }
