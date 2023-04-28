@@ -60,7 +60,6 @@ function buyHTML(book) {
 function render() {
   const books = cartHandler.getCart().map(value => ({ ...value, ...bookHandler.find(value.id) }))
   const buyBooks = userHandler.getBooks().map(id => bookHandler.find(id))
-  console.log(books, buyBooks)
 
   wrapperElement.innerHTML = books.length > 0 ?
     books.map(book => html(book)).join('\n') :

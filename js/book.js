@@ -1027,6 +1027,7 @@ const bookHandler = {
       image: "./images/books/tate-no-yuusha-no-nariagari.jpg",
       type: "Dị Giới, Xuyên Không",
       author: "Aneko Yusagi",
+      top: true,
       description: [
         "Iwatani Naofumi bị triệu hồi đến một thế giới khác cùng với 3 người khác để trở thành những dũng sĩ của thế giới đó. Mỗi người họ đều được trang bị từng vũ khí huyền thoại riêng biệt khi bị triệu hồi. Naofumi tình cờ nhận được chiếc khiên huyền thoại làm vũ khí. Nhưng do sự thiếu uy tín cũng như kinh nghiệm của mình, rốt cuộc cậu chỉ có được duy nhất một người đồng đội trong khi những dũng sĩ khác lại có đến vài người. Xui xẻo hơn nữa, vào ngày thứ 3 Naofumi lại bị chính người đồng hành của mình phản bội, vu cáo và cướp đoạt trằng trợn. Bị xa lánh bởi mọi người, trong suy nghĩ của Naofumi chất chứa với không gì khác ngoài lòng căm thù và mong muốn báo thù. Và thế là, định mệnh của cậu trong một thế giới song song bắt đầu…",
         "Naofumi là người anh hùng đầu tiên (và có lẽ cũng là cuối cùng) không tin tưởng bất cứ ai ngoại trừ một nô lệ."
@@ -1362,6 +1363,7 @@ const bookHandler = {
       image: "./images/books/honzuki-no-gekokujou.jpg",
       type: "Hài hước, Fantasy, Shoujo, Đời thường",
       author: "Miya Kazuki",
+      top: true,
       description: [
         "Urano, 22 tuổi, một con mọt sách đúng nghĩa, sau vài khó khăn đã tìm được công việc thủ thư ở một trường đại học, nhưng rồi không may sao lại bị tủ sách đè chết. Cô được tái sinh tại một thế giới khác với danh nghĩa cô con gái 5 tuổi của một người lính, ở đó trình độ dân trí rất thấp và sách là thứ khan hiếm còn hơn cả kim cương! Nhưng bản tính mọt sách của Urano không cho phép cô sống thiếu sách. Vậy một con mọt sách sẽ làm gì với tình trạng thiếu thốn ấy? Mời các bạn đón đọc."
       ],
@@ -1524,6 +1526,7 @@ const bookHandler = {
       image: "./images/books/youkoso-jitsuryoku-shijou-shugi-no-kyoushitsu-e.jpg",
       author: "Kinugasa Syougo",
       type: "Comedy Romance School Life",
+      top: true,
       description: [
         "Cao trung Koudo Ikusei, một ngôi trường có danh tiếng đứng đầu với cơ sở vật chất tiên tiến nhất, nơi có gần như 100% học sinh tiến vào đại học hoặc kiếm được việc làm. Các học sinh tại đây có quyền tự do để bất kỳ kiểu tóc nào và mang bất kỳ vật dụng cá nhân nào mong muốn. Koudo Ikusei là một ngôi trường như thiên đường, nhưng sự thật là chỉ có những học sinh đứng đầu mới được nhận được sự đối xử ưu ái.",
         "Nhân vật chính Kiyotaka Ayanokouji là học viên của lớp D, nơi mà ngôi trường đá các học viên “yếu kém” vào đó nhằm để xỉ nhục họ. Vì lý do nào đó, Kiyokata đã bất cẩn trong kỳ kiểm tra đầu vào, và bị bỏ vào lớp D. Sau khi gặp gỡ Suzune Horikita và Kikyou Kushida, hai học sinh khác trong lớp của mình, hoàn cảnh của Kiyokata đã bắt đầu biến đổi."
@@ -2764,12 +2767,12 @@ const bookHandler = {
     `
   },
 
-  getListNew(length = this.data.length) {
+  getList(conditions = (i, j) => false) {
     const result = Array.from(this.data)
 
     for (let i = 0; i < result.length - 1; i++) {
       for (let j = i + 1; j < result.length; j++) {
-        if (result[i].time < result[j].time) {
+        if (conditions(result[i], result[j])) {
           const t = result[i]
           result[i] = result[j]
           result[j] = t
@@ -2777,23 +2780,19 @@ const bookHandler = {
       }
     }
 
-    return result.slice(0, length)
+    return result
+  },
+
+  getListNew(length = this.data.length) {
+    return this.getList((i, j) => i.time < j.time).slice(0, length)
   },
 
   getListSale(length = this.data.length) {
-    const result = Array.from(this.data)
+    return this.getList((i, j) => !i.sale || (i.sale > j.sale)).slice(0, length)
+  },
 
-    for (let i = 0; i < result.length - 1; i++) {
-      for (let j = i + 1; j < result.length; j++) {
-        if (!result[i].sale || (result[i].sale > result[j].sale)) {
-          const t = result[i]
-          result[i] = result[j]
-          result[j] = t
-        }
-      }
-    }
-
-    return result.slice(0, length)
+  getListTop(length = this.data.length) {
+    return this.getList((i, j) => !i.top).slice(0, length)
   },
 
   /*
@@ -2816,6 +2815,10 @@ const bookHandler = {
 
       case "sale":
         list = this.getListSale(length)
+        break
+
+      case "top":
+        list = this.getListTop(length)
         break
 
       default:
